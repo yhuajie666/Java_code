@@ -1,0 +1,10 @@
+public class HelloChina{
+	public static void main(String[] args){
+		System.out.println("Hi,everyone\t");
+		System.out.println("My name is \t");
+		System.out.println("我的年龄:20\t");
+		System.out.println("让我们一起踏上取经之路\t");
+
+	}
+}
+
