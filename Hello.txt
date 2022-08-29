@@ -1,0 +1,33 @@
+public class Hello {
+	public static void main(String[] args) {
+		/*System.out.println("Hello");
+		String str="123"+"59";
+		System.out.println(str);
+		int num1=0b110;
+		int num2=110;
+		int num3=0x110A;
+		System.out.println("num1="+num1);
+		System.out.println("num2="+num2);
+		System.out.println("num3="+num3);*/
+		/*int m=12;
+		int n=5;
+		int max=(m<n)?m : n;
+		System.out.println(max);*/
+		//ÈýÔªÔËËã·û
+		/*int x=45;
+		int y=35;
+		int z=10;
+		int max1=(x>y)?x:y;
+		int max2=(max1>z)?max1:z;
+		int max3=(max1>max2)?max1:max2;
+		System.out.println(max3);*/
+		int m,n;
+		m=12;
+		n=5;
+		if(m>n) {
+			System.out.println(m);
+		}
+	
+		
+	}
+}
