@@ -1,0 +1,86 @@
+环形链表
+给你一个链表的头节点 head ，判断链表中是否有环。
+如果链表中有某个节点，可以通过连续跟踪 next 指针再次到达，则链表中存在环。
+ 为了表示给定链表中的环，评测系统内部使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。
+注意：pos 不作为参数进行传递 。仅仅是为了标识链表的实际情况。
+
+如果链表中存在环 ，则返回 true 。 否则，返回 false 。
+
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        if(head==null||head.next==null)		//如果结点为空或只有一个结点，直接return
+            return false;
+        ListNode fast=head,slow=head;		//设置快慢指针，slow走一步，fast走两步
+        while(fast.next!=null&&fast.next.next!=null)
+        {
+            slow=slow.next;
+            fast=fast.next.next;
+            if(slow==fast)//比较的是结点
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+}
+
+
+环形链表Ⅱ
+给定一个链表，返回链表开始入环的第一个节点。 从链表的头节点开始沿着 next 指针进入环的第一个节点为环的入口节点。如果链表无环，则返回 null。
+
+
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public ListNode detectCycle(ListNode head) {
+        if(head==null||head.next==null)
+            return null;
+        ListNode slow=head,fast=head;
+        boolean flag=false;
+        while(fast.next!=null&&fast.next.next!=null)
+        {
+            slow=slow.next;
+            fast=fast.next.next;
+            if(slow==fast)
+            {
+                flag=true;//判断是否有环
+                break;
+            }
+        }
+        if(flag==true)
+        {
+            fast=head;
+            while(fast!=slow)
+            {
+                fast=fast.next;
+                slow=slow.next;
+            }
+            return slow;
+        }
+        else
+            return null;
+    }
+}
+
+
