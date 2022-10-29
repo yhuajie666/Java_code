@@ -1,0 +1,52 @@
+leetcode234.回文链表
+给你一个单链表的头节点 head ，请你判断该链表是否为回文链表。如果是，返回 true ；否则，返回 false 。
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public boolean isPalindrome(ListNode head) {
+        if(head==null)return true;
+        ListNode fast=head,slow=head;
+        while(fast!=null&&fast.next!=null)
+        {
+            fast=fast.next.next;
+            slow=slow.next;
+        }
+        if(fast!=null)//奇数个结点
+        {
+            slow=slow.next;
+        }
+        
+        slow=reversal(slow);//反转链表
+        fast=head;
+        
+        while(slow!=null)
+        {
+            if(fast.val!=slow.val){
+                return false;
+            }
+            fast=fast.next;
+            slow=slow.next;
+        }
+        return true;
+    }
+    public  ListNode reversal(ListNode slow){		//反转链表
+        ListNode cur=slow,pre=null;
+        while(cur!=null)
+        {
+            ListNode next=cur.next;
+            cur.next=pre;
+            pre=cur;
+            cur=next;
+        }
+        return pre;
+}
+}
